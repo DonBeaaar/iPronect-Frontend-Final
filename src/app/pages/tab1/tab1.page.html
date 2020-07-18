@@ -1,0 +1,11 @@
+<ion-header translucent>
+  <br>
+  <ion-toolbar>
+    <ion-searchbar animated (ionChange)="buscar($event)"></ion-searchbar>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-publicaciones [publicacionesHome]="publicaciones"></app-publicaciones>
+</ion-content>
+

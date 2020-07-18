@@ -1,0 +1,39 @@
+
+<ion-card-content>
+    <br>
+    <h2>Comentarios:</h2>
+    <ion-grid class="top-10" *ngFor="let comentario of comentarios">
+        <ion-row>
+            <ion-col size="6">
+                {{comentario?.empresa.nombre}}
+            </ion-col>
+            <ion-col size="6">
+                {{comentario?.comentario}}
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-card-content>
+
+
+<ion-button *ngIf="comentarDisplay === false" expand="block" color="primary" fill="clear" (click)="comentarDisplay = true">
+    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+    <ion-label>Dejar un comentario</ion-label>
+</ion-button>
+
+<ion-card-content *ngIf="comentarDisplay === true">
+    <h2>Agregar comentario</h2>
+    <form (ngSubmit)="comentar(comentarioForm)" #comentarioForm="ngForm">
+        <ion-grid>
+            <ion-row class="top-10">
+                <ion-col>
+                    <label>Comentario: </label>
+                </ion-col>
+                <ion-col>
+                    <textarea required [(ngModel)]="comentario" name="comentario"></textarea>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-button type="submit">Enviar</ion-button>
+    </form>
+</ion-card-content>

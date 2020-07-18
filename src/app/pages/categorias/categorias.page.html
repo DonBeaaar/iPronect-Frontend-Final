@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+     Categorias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Categoria</ion-label>
+          <ion-select (ionChange)="categoariaSeleccionadaEvento($event.detail.value)">
+            <ion-select-option value="{{false}}">-- No filtrar --</ion-select-option>
+            <ion-select-option *ngFor="let categoria of categorias" value="{{categoria._id}}">{{categoria.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item *ngFor="let publicacion of publicaciones">
+          <ion-label text-wrap>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h3>{{publicacion.titulo}}</h3>
+                </ion-col>
+                <ion-col>
+                  ${{publicacion.precio}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  {{publicacion.empresa.nombre}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+          <ion-avatar slot="end">
+            <img src="/assets/arroz.png" />
+          </ion-avatar>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,155 @@
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@next/css/ionic.bundle.css" />
+<style>
+  :root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+  }
+</style>
+<script type="module">
+  import { menuController } from 'https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/index.esm.js';
+  window.menuController = menuController;
+</script>
+<ion-app>
+  
+  <ion-menu side="start" content-id="main-content">
+    <ion-content>
+      <ion-list>
+        <br>
+        <ion-menu-toggle>
+          <ion-item >
+            <ion-icon name="file-tray-stacked-sharp" slot="start"></ion-icon>
+            <ion-label>Mis publicaciones</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item routerLink="/favoritos" routerDirection="forward">
+          <ion-icon name="heart" slot="start"></ion-icon>
+          <ion-label>Distribuidores favoritos</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="archive" slot="start"></ion-icon>
+          <ion-label>Publicaciones archivadas</ion-label>
+        </ion-item>
+        <ion-item routerLink="/productosReservados">
+          <ion-icon name="cart-sharp" slot="start"></ion-icon>
+          <ion-label>Productos reservados</ion-label>
+        </ion-item>
+        <ion-item routerLink="/login">
+          <ion-icon name="power-sharp" slot="start"></ion-icon>
+          <ion-label>Cerrar Sesion</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Mi perfil</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="5">
+            <ion-button size="small" color="dark" fill="clear" (click)="filtrarPublicaciones('Todas')">Todas publicaciones</ion-button>
+          </ion-col>
+          <ion-col size="5">
+            <ion-button size="small" color="dark" fill="clear" (click)="filtrarPublicaciones('Aprobada')">Aprobadas</ion-button>
+          </ion-col>
+          <ion-col size="5"> 
+            <ion-button size="small" color="dark" fill="clear" (click)="filtrarPublicaciones('En-evaluacion')">En evaluacion</ion-button>
+          </ion-col>
+          <ion-col size="5">
+            <ion-button size="small" color="dark" fill="clear" (click)="filtrarPublicaciones('Con-observacion')">Observación</ion-button>
+          </ion-col>
+          <ion-col size="5">
+            <ion-button size="small" color="dark" fill="clear" (click)="filtrarPublicaciones('Rechazada')">Rechazadas</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <h2>Mis publicaciones</h2>
+          </div>        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngFor="let publicacion of publicacionesEmpresa">
+            <ion-avatar slot="start">
+              <img [src]="" />
+            </ion-avatar>
+            <ion-label text-wrap>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <h3>{{publicacion?.titulo}}</h3>
+                  </ion-col>
+                  <ion-col>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col >
+                    Estado: {{publicacion?.estadoPublicacion}}
+                  </ion-col>
+                  
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                   
+                  </ion-col>
+    
+                </ion-row>
+              </ion-grid>
+              
+            </ion-label>
+            <ion-button size="small" color="success" slot="end" routerLink="/editar">editar</ion-button>
+          </ion-item>   
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-content>
+<!--     <ion-content class="ion-padding">
+      <ion-card>
+        <img class="imagen" src="/assets/arroz.png" />
+        <ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>Donde Ale</ion-card-subtitle>
+              </ion-col>
+              <ion-col>
+                <div color="green">$2.000</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-card-title>Arros Tucapel</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          El arroz mas rico del mercado, Tucapel de gran selección pre-graneado
+        </ion-card-content>
+        <ion-button expand="block">observaciones</ion-button>
+      </ion-card>
+    </ion-content> -->
+  </div>
+
+
+</ion-app>
+
+<script>
+  async function openMenu() {
+    await menuController.open();
+  }
+</script>

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Crear publicacion
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  
+  <form [formGroup]="nuevaPublicacionForm" (ngSubmit)="crearPublicacion()">
+    <ion-item padding class="top-20">
+      <ion-label position="stacked">Titulo <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required type="text" name="razon" formControlName="titulo"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="stacked">Precio<ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required type="number" formControlName="precio"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Stock o cantidad disponible<ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required type="number" formControlName="stock"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion"></ion-textarea>
+    </ion-item>
+    <ion-item lines="none" class="top-20">
+      <ion-label>Unidad de medida</ion-label>
+      <ion-select value="KG" formControlName="unidadMedida">
+        <ion-select-option value="KG">Kilogramo</ion-select-option>
+        <ion-select-option value="Litro">Litro</ion-select-option>
+        <ion-select-option value="Caja">Caja 12 Unidades</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none" class="top-20">
+      <ion-label>Producto</ion-label>
+      <ion-select formControlName="producto">
+        <ion-select-option *ngFor="let producto of productos" [value]="producto._id">{{producto.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none" class="top-20">
+      <ion-label>¿Ofrece despacho a domicilio?</ion-label>
+      <ion-toggle slot="end" formControlName="despachoDomicilio"></ion-toggle>
+    </ion-item>
+    
+    <ion-item lines="none" class="top-20">
+      <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+      <input type="file" />
+    </ion-item>
+    <div class="ion-padding">
+      <ion-button [disabled]="!this.nuevaPublicacionForm.valid" expand="block" type="submit" class="ion-no-margin" >Publicar</ion-button>
+    </div>
+  </form>
+
+</ion-content>

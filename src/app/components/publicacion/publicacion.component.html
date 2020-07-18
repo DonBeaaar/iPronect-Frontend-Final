@@ -1,0 +1,30 @@
+
+<ion-card> 
+    <div *ngFor="let imagenPublicacion of publicacion.imagenes">
+      <img class="imagen" src="/assets/{{imagenPublicacion}}"/>
+    </div>    
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>{{publicacion.empresa.nombre}}</ion-card-subtitle>
+          </ion-col>
+          <ion-col>
+            <div color="green">${{publicacion.precio}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      <ion-card-title>{{publicacion.titulo}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{publicacion.descripcion}}
+      
+    </ion-card-content>
+
+    <ion-button (click)="verDetallePublicacion(publicacion._id)">
+      Detalle publicacion
+    </ion-button>
+    
+    
+  </ion-card>

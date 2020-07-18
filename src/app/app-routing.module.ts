@@ -1,10 +1,34 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PostGuard } from './guards/post.guard';
 
 const routes: Routes = [
   {
+    path: 'main',
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
+    canLoad: []
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    pathMatch: 'full',
+    redirectTo: 'login'
+  },
+  {
+    path: 'detalle-publicacion',
+    loadChildren: () => import('./pages/detalle-publicacion/detalle-publicacion.module').then(m => m.DetallePublicacionPageModule)
+  },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./pages/categorias/categorias.module').then(m => m.CategoriasPageModule)
+  },
+  {
+    path: 'favoritos',
+    loadChildren: () => import('./pages/distribuidores-favoritos/distribuidores-favoritos.module')
+      .then(m => m.DistribuidoresFavoritosPageModule)
   }
 ];
 @NgModule({
@@ -13,4 +37,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
