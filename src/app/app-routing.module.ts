@@ -29,6 +29,14 @@ const routes: Routes = [
     path: 'favoritos',
     loadChildren: () => import('./pages/distribuidores-favoritos/distribuidores-favoritos.module')
       .then(m => m.DistribuidoresFavoritosPageModule)
+  },
+  {
+    path: 'perfil-empresa',
+    loadChildren: () => import('./pages/perfil-empresa/perfil-empresa.module').then( m => m.PerfilEmpresaPageModule)
+  },
+  {
+    path: 'detalle-reserva',
+    loadChildren: () => import('./pages/detalle-reserva/detalle-reserva.module').then( m => m.DetalleReservaPageModule)
   }
 ];
 @NgModule({

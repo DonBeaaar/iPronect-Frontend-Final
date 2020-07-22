@@ -14,4 +14,5 @@ interface Publicacion {
   tipoVenta: string;
   estadoPublicacion: string;
   despachoDomicilio?: boolean;
+  precioDespacho?: number;
 }

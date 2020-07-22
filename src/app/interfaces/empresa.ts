@@ -1,5 +1,6 @@
 
 interface Empresa {
+    _id: string;
     nombre?: string;
     email: string;
     password: string;

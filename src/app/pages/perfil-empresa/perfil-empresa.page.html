@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil empresa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    
+    <img class="imagen" src="/assets/almacen.jpg">
+    <br><br>
+    <h2>{{datosEmpresa?.nombre}}</h2>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <label  for="id-of-input" class="custom-checkbox" (change)="agregarFavorito()">
+      <input #checkStar type="checkbox" id="id-of-input">
+      <i class="glyphicon glyphicon-star-empty"></i>
+      <i class="glyphicon glyphicon-star"></i>
+    </label>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of [1,1,1,1,1,1,1,1,1]">
+        <ion-card> 
+          <img class="imagen" src="assets/clorox.jpg" />
+        <ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-title>Clorox</ion-card-title>
+              </ion-col>
+              <ion-col>
+                <ion-card-title color="primary">$2.000</ion-card-title>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-header>
+        </ion-card>  
+      </ion-col>
+      <!-- <ion-col>
+        <ion-card> 
+          <img class="imagen" src="assets/aceite.png" />
+        <ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-title>Aceite Belmont</ion-card-title>
+              </ion-col>
+              <ion-col>
+                <ion-card-title color="primary">$3.000</ion-card-title>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-header>
+        </ion-card> 
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
+  </ion-content>

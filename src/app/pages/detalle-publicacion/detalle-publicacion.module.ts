@@ -8,6 +8,7 @@ import { DetallePublicacionPageRoutingModule } from './detalle-publicacion-routi
 
 import { DetallePublicacionPage } from './detalle-publicacion.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { DetalleReservaPage } from '../detalle-reserva/detalle-reserva.page';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ComponentsModule } from 'src/app/components/components.module';
     DetallePublicacionPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [DetallePublicacionPage]
+  declarations: [DetallePublicacionPage, DetalleReservaPage]
 })
 export class DetallePublicacionPageModule {}

@@ -85,4 +85,12 @@ export class EmpresaService {
      })
    );
  }
+
+ perfilEmpresaID(empresaID: string){
+   return this.http.get(`${URL}/perfil/empresa/${empresaID}`).pipe(
+     map((respuesta: any) => {
+       return respuesta.perfil;
+     })
+   );
+ }
 }
