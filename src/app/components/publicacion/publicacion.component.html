@@ -1,7 +1,7 @@
 
 <ion-card> 
-    <div *ngFor="let imagenPublicacion of publicacion.imagenes">
-      <img class="imagen" src="/assets/{{imagenPublicacion}}"/>
+    <div>
+      <img class="imagen" src="/assets/{{publicacion.imagenes[0]}}"/>
     </div>    
     <ion-card-header>
       <ion-grid>
@@ -22,7 +22,7 @@
       
     </ion-card-content>
 
-    <ion-button (click)="verDetallePublicacion(publicacion._id)">
+    <ion-button expand="block" (click)="verDetallePublicacion(publicacion._id)">
       Detalle publicacion
     </ion-button>
     

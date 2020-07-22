@@ -17,6 +17,8 @@ export class Tab3Page implements OnInit {
 
   cargarPublicacionesEmpresa(){
     this.empresaService.perfilEmpresa().subscribe((perfil: Perfil) => {
+      console.log(perfil);
+      
       this.datosEmpresa = perfil.empresa;
       this.publicacionesEmpresa = perfil.publicaciones;
       this.publicacionesEmpresaRAW = perfil.publicaciones;

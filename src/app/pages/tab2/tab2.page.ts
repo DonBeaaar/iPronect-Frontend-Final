@@ -19,13 +19,13 @@ export class Tab2Page implements OnInit{
                private uiService: UiServiceService) {}
 
   nuevaPublicacionForm = this.fb.group({
-    titulo: ['Titulo', Validators.required],
-    precio: [200, Validators.required],
-    descripcion: ['Descripcion', Validators.required],
-    unidadMedida: ['Caja', Validators.required],
+    titulo: ['', Validators.required],
+    precio: [ Validators.required],
+    descripcion: ['', Validators.required],
+    unidadMedida: ['', Validators.required],
     producto: ['', Validators.required],
     despachoDomicilio: [false, Validators.required],
-    stock: [20, Validators.required]
+    stock: [ Validators.required]
   });
 
   cargarProductos(){

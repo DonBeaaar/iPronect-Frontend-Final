@@ -11,8 +11,8 @@
       <ion-col>
         <ion-item>
           <ion-label>Categoria</ion-label>
-          <ion-select (ionChange)="categoariaSeleccionadaEvento($event.detail.value)">
-            <ion-select-option value="{{false}}">-- No filtrar --</ion-select-option>
+          <ion-select value="{{false}}" (ionChange)="categoariaSeleccionadaEvento($event.detail.value)">
+            <ion-select-option  value="{{false}}">-- No filtrar --</ion-select-option>
             <ion-select-option *ngFor="let categoria of categorias" value="{{categoria._id}}">{{categoria.nombre}}</ion-select-option>
           </ion-select>
         </ion-item>

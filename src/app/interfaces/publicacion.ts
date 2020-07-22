@@ -15,4 +15,5 @@ interface Publicacion {
   estadoPublicacion: string;
   despachoDomicilio?: boolean;
   precioDespacho?: number;
+  observacion?: string;
 }

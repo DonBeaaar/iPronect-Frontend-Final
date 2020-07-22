@@ -32,6 +32,10 @@
           <ion-icon name="cart-sharp" slot="start"></ion-icon>
           <ion-label>Productos reservados</ion-label>
         </ion-item>
+        <ion-item routerLink="/productos-vendidos">
+          <ion-icon name="cart-sharp" slot="start"></ion-icon>
+          <ion-label>Productos vendidos</ion-label>
+        </ion-item>
         <ion-item routerLink="/login">
           <ion-icon name="power-sharp" slot="start"></ion-icon>
           <ion-label>Cerrar Sesion</ion-label>
@@ -84,7 +88,7 @@
         <ion-col>
           <ion-item *ngFor="let publicacion of publicacionesEmpresa">
             <ion-avatar slot="start">
-              <img [src]="" />
+              <img src="/assets/{{publicacion.imagenes[0]}} "/>
             </ion-avatar>
             <ion-label text-wrap>
               <ion-grid>
@@ -101,44 +105,21 @@
                   </ion-col>
                   
                 </ion-row>
-                <ion-row>
-                  <ion-col>
-                   
+                <ion-row *ngIf="publicacion?.observacion">
+                  <ion-col >
+                      Observacion: {{publicacion?.observacion}}
                   </ion-col>
     
                 </ion-row>
               </ion-grid>
               
             </ion-label>
-            <ion-button size="small" color="success" slot="end" routerLink="/editar">editar</ion-button>
+            
           </ion-item>   
         </ion-col>
       </ion-row>
     </ion-grid>
     </ion-content>
-<!--     <ion-content class="ion-padding">
-      <ion-card>
-        <img class="imagen" src="/assets/arroz.png" />
-        <ion-card-header>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <ion-card-subtitle>Donde Ale</ion-card-subtitle>
-              </ion-col>
-              <ion-col>
-                <div color="green">$2.000</div>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-
-          <ion-card-title>Arros Tucapel</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          El arroz mas rico del mercado, Tucapel de gran selección pre-graneado
-        </ion-card-content>
-        <ion-button expand="block">observaciones</ion-button>
-      </ion-card>
-    </ion-content> -->
   </div>
 
 

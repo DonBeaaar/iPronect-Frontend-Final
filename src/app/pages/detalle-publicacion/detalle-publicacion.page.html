@@ -8,11 +8,8 @@
 <ion-content [fullscreen]="true">
     <ion-card>
         <ion-slides mode="ios" pager="ios" scrollbar="ios">
-            <ion-slide>
-                <img class="imagen" src="assets/arroz.png" />
-            </ion-slide>
-            <ion-slide>
-                <img class="imagen" src="assets/aceite.png" />
+            <ion-slide *ngFor="let imagen of publicacion?.imagenes">
+                <img class="imagen" src="assets/{{imagen}}" />
             </ion-slide>
         </ion-slides>
         <ion-card-header>
@@ -51,7 +48,7 @@
         <div *ngIf="publicacion?.despachoDomicilio">
             <ion-card-content>Despacho a domicilio:
                 <br>
-                Este producto tiene opcion de despacho a domicilio con un valor agregado de $1.000
+                Este producto tiene opcion de despacho a domicilio con un valor agregado de ${{publicacion?.precioDespacho}}
             </ion-card-content>
             <ion-card-content>
                 <ion-item>

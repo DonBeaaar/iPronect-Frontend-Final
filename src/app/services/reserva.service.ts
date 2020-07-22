@@ -25,6 +25,16 @@ export class ReservaService {
       map((respuestaReserva: any) => {
         return respuestaReserva.reservas;
       })
-    )
+    );
+  }
+  productosReservadosVenta() {
+    return this.http.get(`${URL}/reserva/vendedor`).pipe(
+      map((respuestaReserva: any) => {
+        return respuestaReserva.reservas;
+      })
+    );
+  }
+  generarPDFReserva(reservaID: string){
+    return this.http.get(`${URL}/reserva/pdf/${reservaID}`);
   }
 }
