@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/main/tabs/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Productos reservados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <h2>Mis reservas</h2>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item *ngFor="let reserva of reservas">
+          <ion-avatar slot="start">
+            <img [src]="" />
+          </ion-avatar>
+          <ion-label text-wrap>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h3>Producto:{{reserva?.publicacion.titulo}}</h3>
+                </ion-col>
+                <ion-col>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Fecha: {{reserva?.fecha}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Vendedor: {{reserva?.vendedor.nombre}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+          <ion-button size="small" color="danger" slot="end" >Comprobante</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

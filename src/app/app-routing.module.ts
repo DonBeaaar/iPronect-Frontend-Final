@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'detalle-reserva',
     loadChildren: () => import('./pages/detalle-reserva/detalle-reserva.module').then( m => m.DetalleReservaPageModule)
+  },
+  {
+    path: 'productos-reservados',
+    loadChildren: () => import('./pages/productos-reservados/productos-reservados.module').then( m => m.ProductosReservadosPageModule)
   }
 ];
 @NgModule({
