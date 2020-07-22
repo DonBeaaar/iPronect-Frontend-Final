@@ -22,7 +22,7 @@ export class PerfilEmpresaPage implements OnInit {
     this.empresaService.perfilEmpresaID(this.idEmpresa).subscribe((perfilEmrpesa: Perfil) => {
       this.datosEmpresa = perfilEmrpesa.empresa;
       this.publicacionesEmpresa = perfilEmrpesa.publicaciones;
-    })
+    });
   }
 
   ngOnInit() {

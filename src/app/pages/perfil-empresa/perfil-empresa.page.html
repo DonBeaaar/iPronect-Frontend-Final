@@ -1,12 +1,14 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Perfil empresa</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/main/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil de {{datosEmpresa?.nombre}}</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content>
-  <ion-item>
-    
+  <ion-item class="top-20">
     <img class="imagen" src="/assets/almacen.jpg">
     <br><br>
     <h2>{{datosEmpresa?.nombre}}</h2>
@@ -19,21 +21,30 @@
   </ion-item>
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of [1,1,1,1,1,1,1,1,1]">
-        <ion-card> 
-          <img class="imagen" src="assets/clorox.jpg" />
-        <ion-card-header>
+      <ion-col *ngFor="let publicacion of publicacionesEmpresa">
+        <ion-card>
+          <!-- <ion-item>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4"><img class="imagen" src="assets/clorox.jpg" /></ion-col>
+                <ion-col size="4">Titulo</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item> -->
           <ion-grid>
             <ion-row>
-              <ion-col>
-                <ion-card-title>Clorox</ion-card-title>
+              <ion-col size="3">
+                <img class="imagen" src="assets/clorox.jpg" />
               </ion-col>
-              <ion-col>
-                <ion-card-title color="primary">$2.000</ion-card-title>
+              <ion-col class="left-20">
+                <br>
+                <ion-text class="txt-titulo">{{publicacion.titulo}}</ion-text>
+                
+                <br>
+                <ion-text class="txt-precio">${{publicacion.precio}}</ion-text>
               </ion-col>
             </ion-row>
           </ion-grid>
-        </ion-card-header>
         </ion-card>  
       </ion-col>
       <!-- <ion-col>

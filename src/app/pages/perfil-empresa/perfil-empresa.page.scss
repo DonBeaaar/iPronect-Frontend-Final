@@ -1,6 +1,6 @@
 .imagen{
-    height: 70px;
-    width: 60px;
+    height: 80px;
+    width: 70px;
 }
 label {
     /* Presentation */
@@ -9,6 +9,15 @@ label {
   
   /* Required Styling */
   
+.txt-titulo{
+  color: white;
+  font-size: large;
+}
+.txt-precio{
+  color: green;
+  font-size: large;
+}
+
   label input[type="checkbox"] {
     display: none;
   }
