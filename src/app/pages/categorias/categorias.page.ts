@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { PublicacionesService } from 'src/app/services/publicacion.service';
+import { NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-categorias',
@@ -13,7 +15,8 @@ export class CategoriasPage implements OnInit {
   public categorias: Categoria[];
   public publicaciones: Publicacion[];
   private publicacionesRAW: Publicacion[];
-  constructor(private categoriaService: CategoriaService, private publicacionesService: PublicacionesService) { }
+  constructor(private categoriaService: CategoriaService, private publicacionesService: PublicacionesService,
+              private navCtrl: NavController) { }
 
   cargarCategorias() {
     this.categoriaService.getCategorias().subscribe((categorias: Categoria[]) => {
@@ -30,12 +33,11 @@ export class CategoriasPage implements OnInit {
   }
 
   ngOnInit() {
-    this.cargarPublicaciones();
     this.cargarCategorias();
+    this.cargarPublicaciones();
   }
 
   categoariaSeleccionadaEvento(selectedCategoria: any) {
-
     this.publicaciones = this.publicacionesRAW;
     if (selectedCategoria === 'false') {
       return;
@@ -45,6 +47,11 @@ export class CategoriasPage implements OnInit {
         return publicacion.producto.categoria._id === selectedCategoria;
       });
     }
+  }
+
+  verDetallePublicacion(publicacion: string){
+    const navigationExtras: NavigationExtras = { queryParams: { publicacion, vendedor: false }};
+    this.navCtrl.navigateForward(['detalle-publicacion'], navigationExtras);
   }
 
 

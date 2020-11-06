@@ -23,7 +23,7 @@
     <ion-row>
       <ion-col>
         <ion-item *ngFor="let publicacion of publicaciones">
-          <ion-label text-wrap>
+          <ion-label text-wrap (click)="verDetallePublicacion(publicacion._id)">
             <ion-grid>
               <ion-row>
                 <ion-col>
@@ -41,7 +41,7 @@
             </ion-grid>
           </ion-label>
           <ion-avatar slot="end">
-            <img src="/assets/arroz.png" />
+            <img class="imagen" src="/assets/{{publicacion.imagenes[0]}}"/>
           </ion-avatar>
         </ion-item>
       </ion-col>
