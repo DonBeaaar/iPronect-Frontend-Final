@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { EmpresaService } from 'src/app/services/empresa.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil-empresa',
@@ -14,7 +15,7 @@ export class PerfilEmpresaPage implements OnInit {
   public publicacionesEmpresa: Publicacion[];
 
   @ViewChild('checkStar') private chceckStar;
-  constructor(private route: ActivatedRoute, private empresaService: EmpresaService) { }
+  constructor(private route: ActivatedRoute, private empresaService: EmpresaService, private navCtrl: NavController) { }
 
 
   cargarDatosEmpresa(){
@@ -32,6 +33,10 @@ export class PerfilEmpresaPage implements OnInit {
   agregarFavorito() {
     console.log(this.chceckStar.nativeElement.checked);
 
+  }
+  verDetallePublicacion(publicacion: string){
+    const navigationExtras: NavigationExtras = { queryParams: { publicacion, vendedor: false }};
+    this.navCtrl.navigateForward(['detalle-publicacion'], navigationExtras);
   }
 
 }

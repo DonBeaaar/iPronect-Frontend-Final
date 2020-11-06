@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresaService } from 'src/app/services/empresa.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-tab3',
@@ -9,7 +10,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class Tab3Page implements OnInit {
 
-  constructor(private empresaService: EmpresaService, private toastCtrl: ToastController) {}
+  constructor(private empresaService: EmpresaService, private toastCtrl: ToastController, private navCtrl: NavController) {}
 
   datosEmpresa: Empresa;
   publicacionesEmpresa: Publicacion[];
@@ -17,8 +18,6 @@ export class Tab3Page implements OnInit {
 
   cargarPublicacionesEmpresa(){
     this.empresaService.perfilEmpresa().subscribe((perfil: Perfil) => {
-      console.log(perfil);
-      
       this.datosEmpresa = perfil.empresa;
       this.publicacionesEmpresa = perfil.publicaciones;
       this.publicacionesEmpresaRAW = perfil.publicaciones;
@@ -48,6 +47,10 @@ export class Tab3Page implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+  verDetallePublicacion(publicacion: string){
+    const navigationExtras: NavigationExtras = { queryParams: { publicacion, vendedor: false }};
+    this.navCtrl.navigateForward(['detalle-publicacion'], navigationExtras);
   }
 
 }

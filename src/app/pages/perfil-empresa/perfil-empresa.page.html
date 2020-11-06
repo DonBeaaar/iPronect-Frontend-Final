@@ -21,49 +21,38 @@
   </ion-item>
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let publicacion of publicacionesEmpresa">
-        <ion-card>
-          <!-- <ion-item>
+      <ion-col>
+        <ion-item *ngFor="let publicacion of publicacionesEmpresa">
+          <ion-avatar slot="start">
+            <img src="/assets/{{publicacion.imagenes[0]}} "/>
+          </ion-avatar>
+          <ion-label text-wrap (click)="verDetallePublicacion(publicacion._id)">
             <ion-grid>
               <ion-row>
-                <ion-col size="4"><img class="imagen" src="assets/clorox.jpg" /></ion-col>
-                <ion-col size="4">Titulo</ion-col>
+                <ion-col>
+                  <h3>{{publicacion?.titulo}}</h3>
+                </ion-col>
+                <ion-col>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col >
+                  Precio: {{publicacion?.precio}}
+                </ion-col>
+                
+              </ion-row>
+              <ion-row *ngIf="publicacion?.observacion">
+                <ion-col >
+                    Cantidad disponible: {{publicacion?.stock}}
+                </ion-col>
+  
               </ion-row>
             </ion-grid>
-          </ion-item> -->
-          <ion-grid>
-            <ion-row>
-              <ion-col size="3">
-                <img class="imagen" src="assets/clorox.jpg" />
-              </ion-col>
-              <ion-col class="left-20">
-                <br>
-                <ion-text class="txt-titulo">{{publicacion.titulo}}</ion-text>
-                
-                <br>
-                <ion-text class="txt-precio">${{publicacion.precio}}</ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card>  
+            
+          </ion-label>
+          
+        </ion-item>   
       </ion-col>
-      <!-- <ion-col>
-        <ion-card> 
-          <img class="imagen" src="assets/aceite.png" />
-        <ion-card-header>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <ion-card-title>Aceite Belmont</ion-card-title>
-              </ion-col>
-              <ion-col>
-                <ion-card-title color="primary">$3.000</ion-card-title>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card-header>
-        </ion-card> 
-      </ion-col> -->
     </ion-row>
   </ion-grid>
   </ion-content>
