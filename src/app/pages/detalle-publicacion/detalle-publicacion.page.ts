@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { PublicacionesService } from 'src/app/services/publicacion.service';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-detalle-publicacion',
@@ -10,22 +11,33 @@ import { NavController } from '@ionic/angular';
 })
 export class DetallePublicacionPage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private publicacionService: PublicacionesService, private navCtrl: NavController) { }
+  constructor(private route: ActivatedRoute, private publicacionService: PublicacionesService, private navCtrl: NavController,
+              private storage: Storage) { }
 
   idPublicacion: string;
   publicacion: Publicacion;
   cantidad = 0;
   despacho: boolean;
+  comprador = true;
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.queryParams.subscribe(publicacion => { this.idPublicacion = publicacion.publicacion; });
-    this.cargarDetallePublicacion();
+    await this.cargarDetallePublicacion();
+    await this.verificarEmpresaCompradora();
   }
 
-  cargarDetallePublicacion() {
+  async verificarEmpresaCompradora(){
+    const empresa: Empresa = await this.storage.get('empresa');
+    console.log(empresa);
+    
+    if (this.publicacion.empresa._id === empresa._id) {
+        this.comprador = false;
+    }
+  }
+
+ cargarDetallePublicacion() {
     this.publicacionService.detallePublicacion(this.idPublicacion).subscribe((publicacion: Publicacion) => {
       this.publicacion = publicacion;
-      console.log(this.publicacion);
     });
   }
 
@@ -57,6 +69,7 @@ export class DetallePublicacionPage implements OnInit {
         cantidad: this.cantidad,
         despacho: this.despacho,
         publicacion: this.publicacion._id,
+        imagenReserva: this.publicacion.imagenes[0],
         precio: precioTotal
       }
     };

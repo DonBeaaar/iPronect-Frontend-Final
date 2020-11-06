@@ -45,7 +45,7 @@
         <ion-card-content>Cantidad disponible:
             {{publicacion?.stock}}
         </ion-card-content>
-        <div *ngIf="publicacion?.despachoDomicilio">
+        <div *ngIf="publicacion?.despachoDomicilio" >
             <ion-card-content>Despacho a domicilio:
                 <br>
                 Este producto tiene opcion de despacho a domicilio con un valor agregado de ${{publicacion?.precioDespacho}}
@@ -57,7 +57,7 @@
                 </ion-item>
             </ion-card-content>
         </div>
-        <ion-card-content>
+        <ion-card-content *ngIf="comprador === true">
             <ion-grid>
                 <ion-row>
                     <ion-label>Cantidad ({{publicacion?.unidadMedida}}):</ion-label>

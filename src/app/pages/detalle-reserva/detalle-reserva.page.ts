@@ -21,6 +21,7 @@ export class DetalleReservaPage implements OnInit {
   despachoDomicilio: boolean;
   publicacionID: string;
   reservaConfirmada: Reserva;
+  imagenReserva: string;
 
   constructor(private route: ActivatedRoute, private reservaService: ReservaService, private uiService: UiServiceService, 
               private navCtrl: NavController) { }
@@ -33,6 +34,7 @@ export class DetalleReservaPage implements OnInit {
       this.precioFinal = reserva.precio;
       this.despachoDomicilio = reserva.despacho;
       this.publicacionID = reserva.publicacion;
+      this.imagenReserva = reserva.imagenReserva;
     });
   }
 
