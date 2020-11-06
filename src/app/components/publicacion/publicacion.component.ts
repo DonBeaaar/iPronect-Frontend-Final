@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-publicacion',
@@ -20,7 +21,7 @@ export class PublicacionComponent implements OnInit {
   }
 
   verDetallePublicacion(publicacion: string){
-    const navigationExtras: NavigationExtras = { queryParams: { publicacion }};
+    const navigationExtras: NavigationExtras = { queryParams: { publicacion, vendedor: false }};
     this.navCtrl.navigateForward(['detalle-publicacion'], navigationExtras);
   }
 }
